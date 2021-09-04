@@ -18,6 +18,9 @@ use yii\widgets\Menu;
 AdminLteAsset::register($this);
 FontAwesomeAsset::register($this);
 AutosizeTextareaAsset::register($this);
+
+$csrfParam = Yii::$app->request->csrfParam;
+$csrfToken = Yii::$app->request->csrfToken;
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -54,6 +57,22 @@ AutosizeTextareaAsset::register($this);
                         'role' => 'button'
                     ]),
                 ],
+                Yii::$app->user->isGuest ? ([
+                    'label' => Html::a('Login', ['user/login'], [
+                        'class' => 'nav-link',
+                    ]),
+                ]) : ([
+                    'url' => ['/user/logout'],
+                    'label' => 'Logout',
+                    'template' => <<<HTML
+<form method="post" action="{url}">
+<input type="hidden" name="{$csrfParam}" value="{$csrfToken}" />
+<input type="submit" class="btn nav-link" value="{label}" />
+</form>
+HTML
+                    ,
+                ]
+                ),
             ]
         ]); ?>
     </div>
