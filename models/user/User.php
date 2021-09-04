@@ -72,4 +72,9 @@ class User extends ActiveRecord
         $this->email = $email;
         $this->status = $status;
     }
+
+    public function isActive(): bool
+    {
+        return $this->status === self::STATUS_ACTIVE;
+    }
 }

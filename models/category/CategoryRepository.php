@@ -38,9 +38,9 @@ class CategoryRepository
         return $this->find()->all();
     }
 
-    public function count(): int
+    public function count(): string
     {
-        return (int)$this->find()->count();
+        return $this->find()->count();
     }
 
     public function search(CategoryFilter $form): ActiveDataProvider

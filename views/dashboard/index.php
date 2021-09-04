@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="col-lg-3 col-6">
         <div class="small-box bg-info">
             <div class="inner">
-                <h3><?= number_format($categoryCount, 0, '', '') ?></h3>
+                <h3><?= number_format((int)$categoryCount, 0, '', '') ?></h3>
                 <p>Categories</p>
             </div>
             <div class="icon">
@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="col-lg-3 col-6">
         <div class="small-box bg-info">
             <div class="inner">
-                <h3><?= number_format($shopCount, 0, '', '') ?></h3>
+                <h3><?= number_format((int)$shopCount, 0, '', '') ?></h3>
                 <p>Shops</p>
             </div>
             <div class="icon">
@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="col-lg-3 col-6">
         <div class="small-box bg-info">
             <div class="inner">
-                <h3><?= number_format($userCount, 0, '', '') ?></h3>
+                <h3><?= number_format((int)$userCount, 0, '', '') ?></h3>
                 <p>Coupons</p>
             </div>
             <div class="icon">
@@ -61,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="col-lg-3 col-6">
         <div class="small-box bg-info">
             <div class="inner">
-                <h3><?= number_format($userCount, 0, '', '') ?></h3>
+                <h3><?= number_format((int)$userCount, 0, '', '') ?></h3>
                 <p>Users</p>
             </div>
             <div class="icon">

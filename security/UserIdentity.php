@@ -24,7 +24,7 @@ class UserIdentity implements IdentityInterface
 
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        throw new \DomainException('Найти идентификацию по токену доступа не реализовано.');
+        throw new \DomainException('Find identification by access token is not implemented.');
     }
 
     public function getId(): ?int

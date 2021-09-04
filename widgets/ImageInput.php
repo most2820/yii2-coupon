@@ -20,7 +20,6 @@ class ImageInput extends InputWidget
 
     public function run(): string
     {
-//        return Html::img($this->value, $this->options) . Html::hiddenInput($this->attribute);
         return Html::img($this->value, $this->options) . Html::fileInput($this->attribute);
     }
 }

@@ -18,7 +18,7 @@ class CouponRepository
     private function getBy(array $condition): ?Coupon
     {
         if (!$coupon = $this->find()->andWhere($condition)->limit(1)->one()) {
-            throw new NotFoundException('Купон не найден.');
+            throw new NotFoundException('Coupon is not found.');
         }
         return $coupon;
     }
@@ -26,14 +26,14 @@ class CouponRepository
     public function save(Coupon $coupon): void
     {
         if (!$coupon->save()) {
-            throw new \RuntimeException('Ошибка сохранения купона.');
+            throw new \RuntimeException('Saving error.');
         }
     }
 
     public function remove(Coupon $coupon): void
     {
         if (!$coupon->delete()) {
-            throw new \RuntimeException('Ошибка удаления купона.');
+            throw new \RuntimeException('Removing error.');
         }
     }
 
@@ -58,8 +58,8 @@ class CouponRepository
         return new ActiveDataProvider(['query' => $query]);
     }
 
-    public function count(): int
+    public function count(): string
     {
-        return (int)$this->find()->count();
+        return $this->find()->count();
     }
 }

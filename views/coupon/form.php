@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 /* @var $this yii\web\View */
-
 /* @var $coupon Coupon */
 
 /* @var $model CouponForm */

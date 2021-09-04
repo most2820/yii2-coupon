@@ -12,9 +12,19 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 
 $this->title = $name;
+$this->params['breadcrumbs'][] = $this->title;
 ?>
-    <h1><?= $exception->statusCode ?></h1>
-    <p class="subtitle">
-        <?= $exception->getMessage() ?>
-    </p>
-<?= Html::a('Go back to main page', Url::home(), ['btn']) ?>
+<div class="error-page">
+    <h2 class="headline text-warning">
+        <?= $exception->statusCode ?>
+    </h2>
+    <div class="error-content">
+        <h3>
+            <i class="fas fa-exclamation-triangle text-warning"></i>
+            <?= $exception->getMessage() ?>
+        </h3>
+        <p>
+            Meanwhile, you may <?= Html::a('return to dashboard', Url::home(), ['btn']) ?>.
+        </p>
+    </div>
+</div>

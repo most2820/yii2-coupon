@@ -13,8 +13,9 @@ use app\models\user\UserRepository;
 use app\models\user\UserService;
 use Yii;
 use yii\filters\VerbFilter;
-use yii\helpers\ArrayHelper;
+use app\security\UserIdentity;
 use yii\web\Controller;
+use app\models\user\LoginForm;
 use yii\web\NotFoundHttpException;
 
 class UserController extends Controller
@@ -102,6 +103,28 @@ class UserController extends Controller
             Yii::$app->session->setFlash('error', $e->getMessage());
         }
         return $this->redirect(['index']);
+    }
+
+    public function actionLogin()
+    {
+        $this->layout = 'login';
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+        $form = new LoginForm();
+        if ($form->load(Yii::$app->request->post()) && $form->validate()) {
+            try {
+                $user = $this->userService->login($form);
+                Yii::$app->user->login(new UserIdentity($user), $form->rememberMe ? 3600 * 24 * 30 : 0);
+                return $this->goBack();
+            } catch (\DomainException $e) {
+                Yii::$app->errorHandler->logException($e);
+                Yii::$app->session->setFlash('error', $e->getMessage());
+            }
+        }
+        return $this->render('login', [
+            'model' => $form,
+        ]);
     }
 
     protected function findModel($id): User

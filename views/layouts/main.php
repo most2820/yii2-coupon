@@ -18,9 +18,6 @@ use yii\widgets\Menu;
 AdminLteAsset::register($this);
 FontAwesomeAsset::register($this);
 AutosizeTextareaAsset::register($this);
-
-$csrfParam = Yii::$app->request->csrfParam;
-$csrfToken = Yii::$app->request->csrfToken;
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -132,7 +129,7 @@ $csrfToken = Yii::$app->request->csrfToken;
                                 'tag' => 'ol'
                             ],
                             'itemTemplate' => "<li class='breadcrumb-item'>{link}</li>\n",
-                            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                            'links' => $this->params['breadcrumbs'] ?? [],
                         ]) ?>
                     </div>
                 </div>

@@ -18,7 +18,7 @@ class ShopRepository
     private function getBy(array $condition): ?Shop
     {
         if (!$shop = $this->find()->andWhere($condition)->limit(1)->one()) {
-            throw new NotFoundException('Магазин не найден.');
+            throw new NotFoundException('Shop is not found.');
         }
         return $shop;
     }
@@ -26,14 +26,14 @@ class ShopRepository
     public function save(Shop $shop): void
     {
         if (!$shop->save()) {
-            throw new \RuntimeException('Ошибка сохранения магазина.');
+            throw new \RuntimeException('Saving error.');
         }
     }
 
     public function remove(Shop $shop): void
     {
         if (!$shop->delete()) {
-            throw new \RuntimeException('Ошибка удаления магазина.');
+            throw new \RuntimeException('Removing error.');
         }
     }
 
@@ -86,8 +86,8 @@ class ShopRepository
             ->all();
     }
 
-    public function count(): int
+    public function count(): string
     {
-        return (int)$this->find()->count();
+        return $this->find()->count();
     }
 }

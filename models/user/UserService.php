@@ -57,6 +57,15 @@ class UserService
         return $user;
     }
 
+    public function login(LoginForm $form): ?User
+    {
+        $user = $this->userRepository->getByEmail($form->email);
+        if (!$user || !$user->isActive() || !$this->security->validatePassword($form->password, $user->password_hash)) {
+            throw new \DomainException('Invalid user or password.');
+        }
+        return $user;
+    }
+
     public function remove($id)
     {
         $user = $this->userRepository->getById($id);
