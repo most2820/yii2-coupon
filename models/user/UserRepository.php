@@ -43,6 +43,7 @@ class UserRepository
         return $this->getProvider(
             $this->find()
                 ->andFilterWhere(['id' => $form->id])
+                ->andFilterWhere(['status' => $form->status])
                 ->andFilterWhere(['like', 'email', $form->email])
                 ->andFilterWhere(['like', 'username', $form->username])
         );
