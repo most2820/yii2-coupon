@@ -44,13 +44,6 @@ $loginLink = Yii::$app->urlManager->createAbsoluteUrl(['user/login']);
                                 </li>
                                 <li>Password: <?= $password ?></li>
                             </ul>
-                            <? /*
-                            <p>
-                                Чтобы закончить регистрацию, подтвердите свой email. Для этого перейдите по ссылке <br>
-                                <a href="https://dina2820.retailcrm.ru/communications/letters/doi/confirm-email?email=most2820@yandex.ru&amp;code=75b7ec267a693d8e23d938be52c5ee9d"
-                                   data-link-id="3" target="_blank" rel="noopener noreferrer">https://dina2820.retailcrm.ru/communications/letters/doi/confirm-email?email=most2820@yandex.ru&amp;code=75b7ec267a693d8e23d938be52c5ee9d</a>
-                            </p>
-                            */ ?>
                         </div>
                     </td>
                 </tr>
